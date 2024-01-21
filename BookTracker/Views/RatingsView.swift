@@ -36,22 +36,22 @@ public struct RatingsView: View {
         self.color = color
         self.sfSymbol = sfSymbol
     }
-
+    
     public var body: some View {
         HStack {
-                Image(systemName: sfSymbol)
-                    .resizable()
-                    .scaledToFit()
-                    .symbolVariant(.slash)
-                    .foregroundStyle(Color(color))
-                    .onTapGesture {
-                        withAnimation{
-                            currentRating = nil
-                        }
+            Image(systemName: sfSymbol)
+                .resizable()
+                .scaledToFit()
+                .symbolVariant(.slash)
+                .foregroundStyle(Color(color))
+                .onTapGesture {
+                    withAnimation{
+                        currentRating = nil
                     }
-                    .opacity(currentRating == 0 ? 0 : 1)
+                }
+                .opacity(currentRating == 0 ? 0 : 1)
             ForEach(1...maxRating, id: \.self) { rating in
-               Image(systemName: sfSymbol)
+                Image(systemName: sfSymbol)
                     .resizable()
                     .scaledToFit()
                     .fillImage(correctImage(for: rating))
